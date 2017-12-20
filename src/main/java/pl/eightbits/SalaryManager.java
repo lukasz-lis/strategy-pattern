@@ -12,17 +12,19 @@ class SalaryManager {
 
     List<Account> paySalariesFor(List<AccountType> accountTypes) {
 
+        BigDecimal baseSalary = new BigDecimal("1000");
+
         return accountTypes.stream().map(accountType -> {
             if (MANAGER.equals(accountType)) {
-                return new Account(new BigDecimal("2000"), accountType);
+                return new Account(new BigDecimal("2").multiply(baseSalary), accountType);
             }
             if (SENIOR.equals(accountType)) {
-                return new Account(new BigDecimal("1000"), accountType);
+                return new Account(new BigDecimal("1").multiply(baseSalary), accountType);
             }
             if (REGULAR.equals(accountType)) {
-                return new Account(new BigDecimal("500"), accountType);
+                return new Account(new BigDecimal("0.5").multiply(baseSalary), accountType);
             }
-            return new Account(new BigDecimal("20000"), accountType);
+            return new Account(baseSalary, accountType);
         }).collect(Collectors.toList());
     }
 }
