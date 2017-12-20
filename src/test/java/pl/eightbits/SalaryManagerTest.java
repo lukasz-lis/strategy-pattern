@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static pl.eightbits.AccountType.*;
 
 class SalaryManagerTest {
@@ -19,12 +20,10 @@ class SalaryManagerTest {
         SalaryManager salaryManager = new SalaryManager();
         List<Account> accounts = salaryManager.paySalariesFor(accountTypes, new BigDecimal("1000"));
 
-        List<Account> expectedResult = new ArrayList<>();
-        expectedResult.add(new Account(new BigDecimal("2000"), MANAGER));
-        expectedResult.add(new Account(new BigDecimal("500.0"), REGULAR));
-        expectedResult.add(new Account(new BigDecimal("1000"), SENIOR));
-
-        assertEquals(expectedResult, accounts);
+        assertEquals(3, accounts.size());
+        assertTrue(accounts.contains(new Account(new BigDecimal("2000"), MANAGER)));
+        assertTrue(accounts.contains(new Account(new BigDecimal("500.0"), REGULAR)));
+        assertTrue(accounts.contains(new Account(new BigDecimal("1000"), SENIOR)));
     }
 
 }
