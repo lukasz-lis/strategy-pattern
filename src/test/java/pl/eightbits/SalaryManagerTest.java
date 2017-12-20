@@ -17,11 +17,11 @@ class SalaryManagerTest {
         List<AccountType> accountTypes = Arrays.asList(MANAGER, REGULAR, SENIOR);
 
         SalaryManager salaryManager = new SalaryManager();
-        List<Account> accounts = salaryManager.paySalariesFor(accountTypes);
+        List<Account> accounts = salaryManager.paySalariesFor(accountTypes, new BigDecimal("1000"));
 
         List<Account> expectedResult = new ArrayList<>();
         expectedResult.add(new Account(new BigDecimal("2000"), MANAGER));
-        expectedResult.add(new Account(new BigDecimal("500"), REGULAR));
+        expectedResult.add(new Account(new BigDecimal("500.0"), REGULAR));
         expectedResult.add(new Account(new BigDecimal("1000"), SENIOR));
 
         assertEquals(expectedResult, accounts);

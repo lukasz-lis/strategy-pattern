@@ -10,9 +10,7 @@ import static pl.eightbits.AccountType.SENIOR;
 
 class SalaryManager {
 
-    List<Account> paySalariesFor(List<AccountType> accountTypes) {
-
-        BigDecimal baseSalary = new BigDecimal("1000");
+    List<Account> paySalariesFor(List<AccountType> accountTypes, BigDecimal baseSalary) {
 
         return accountTypes.stream().map(accountType -> {
             if (MANAGER.equals(accountType)) {
